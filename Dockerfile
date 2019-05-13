@@ -4,8 +4,8 @@ ARG HOST_HOME_DIR
 USER root
 
 RUN apt update && apt install telnet git -y
-RUN wget https://storage.googleapis.com/kubernetes-helm/helm-v2.13.1-linux-arm64.tar.gz -O latest.tgz
-RUN tar -xzf latest.tgz && mv linux-arm64/helm /usr/bin/helm && rm -rf latest.tgz linux-arm64
+RUN wget https://storage.googleapis.com/kubernetes-helm/helm-v2.13.1-linux-amd64.tar.gz -O latest.tgz
+RUN tar -xzf latest.tgz && mv linux-amd64/helm /usr/bin/helm && chmod +x /usr/bin/helm && rm -rf latest.tgz linux-amd64
 
 RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
 RUN chmod +x ./kubectl

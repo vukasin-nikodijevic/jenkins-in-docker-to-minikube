@@ -7,6 +7,9 @@ cp -a /.kube "${HOME}"
 
 kubectx minikube
 
+# Needed in order to install tiller into minikube if doesn't exists already
+[[ ! -d /var/jenkins_home/.helm ]] && helm init
+
 /sbin/tini -- /usr/local/bin/jenkins.sh
 
 exec "$@"
